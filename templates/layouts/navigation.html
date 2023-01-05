@@ -6,15 +6,28 @@
 				<div id="responsive-nav">
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Головна</a></li>
-						<li><a href="#">Про сайт</a></li>
-						<li><a href="#">Каталог</a></li>
-						<li><a href="#">Новини</a></li>
-						<li><a href="#">Контакти</a></li>
+						<li class="active"><a href="/">Головна</a></li>
+						<li><a href="/home/about">Про сайт</a></li>
+						<li><a href="/catalog/index">Каталог</a></li>
+						<li><a href="/news/index">Новини</a></li>
+						<li><a href="/home/contacts">Контакти</a></li>
 					</ul>
 					<ul class="main-nav nav navbar-nav navbar-right">
-						<li><a href="#">Гість</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i> Особистий кабінет</a></li>
+						<li>
+                            <a href="#">
+                                 Вітаю,
+                                <span style="color: darkcyan">&nbsp;
+                                    {% if user.is_authenticated %}
+                                        {{ user.username }}
+                                    {% else %}
+                                        Гість
+                                    {% endif %}
+                                </span>
+
+                            </a>
+                            <input type="hidden" id="user_id" value="{{ user.id }}">
+                        </li>
+
 					</ul>
 					<!-- /NAV -->
 				</div>

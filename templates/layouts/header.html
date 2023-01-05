@@ -1,6 +1,5 @@
         {% load static %}
         <header>
-			<!-- TOP HEADER -->
 			<div id="top-header">
 				<div class="container">
 					<ul class="header-links pull-left">
@@ -8,19 +7,19 @@
                         <li><a href="#"><i class="fa fa-dollar"></i>UAH</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-
-						<li><a href="#"><i class="fa fa-user-o"></i>Вхід</a></li>
-						<li><a href="#"><i class="fa fa-user-o"></i>Реєстрація</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="/accounts/profile"><i class="fa fa-user-o"></i>Особистий кабінет</a></li>
+                            <li><a href="/accounts/sign_out"><i class="fa fa-sign-out"></i>Вихід</a></li>
+                        {% else %}
+                            <li><a href="/accounts/sign_in"><i class="fa fa-user-o"></i>Вхід</a></li>
+                            <li><a href="/accounts/sign_up"><i class="fa fa-sign-in"></i>Реєстрація</a></li>
+                        {% endif %}
 					</ul>
 				</div>
 			</div>
-			<!-- /TOP HEADER -->
 
-			<!-- MAIN HEADER -->
 			<div id="header">
-				<!-- container -->
 				<div class="container">
-					<!-- row -->
 					<div class="row">
 						<!-- LOGO -->
 						<div class="col-md-3">
@@ -33,7 +32,6 @@
 						</div>
 						<!-- /LOGO -->
 
-						<!-- SEARCH BAR -->
 						<div class="col-md-6">
 							<div class="header-search">
 								<form>
@@ -42,16 +40,14 @@
 								</form>
 							</div>
 						</div>
-						<!-- /SEARCH BAR -->
 
-						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								<div id="wishlist">
 									<a href="#">
 										<i class="fa fa-heart-o"></i>
-										<span>Your Wishlist</span>
-										<div class="qty">2</div>
+										<span>Обране</span>
+										<div id="wish_count" class="qty">0</div>
 									</a>
 								</div>
 
@@ -59,7 +55,7 @@
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Кошик</span>
-										<div class="qty">3</div>
+										<div id="cart_count" class="qty">0</div>
 									</a>
 									<div class="cart-dropdown">
 										<div class="cart-list">
@@ -74,20 +70,10 @@
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
 
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="{% static 'img/product02.png' %}" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
 										</div>
 										<div class="cart-summary">
-											<small>3 Item(s) selected</small>
-											<h5>SUBTOTAL: $2940.00</h5>
+											<h4>Товарів обрано: 0</h4>
+											<h5>Загальна вартість: 0 грн.</h5>
 										</div>
 										<div class="cart-btns">
 											<a href="#">Переглянути кошик</a>
@@ -100,17 +86,13 @@
 								<div class="menu-toggle">
 									<a href="#">
 										<i class="fa fa-bars"></i>
-										<span>Menu</span>
+										<span>Меню</span>
 									</a>
 								</div>
 								<!-- /Menu Toogle -->
 							</div>
 						</div>
-						<!-- /ACCOUNT -->
 					</div>
-					<!-- row -->
 				</div>
-				<!-- container -->
 			</div>
-			<!-- /MAIN HEADER -->
 		</header>
